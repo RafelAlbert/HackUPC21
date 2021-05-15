@@ -5,8 +5,8 @@ var game_layout = function( p ) {
     for (var j = 0; j < FILES; ++j){
       grid[j] = new Array(COLS);
       for (var i = 0; i < COLS; ++i){
-        grid[j][i] = new Box(i*SIZE, j*SIZE, p);
-        grid[j][i].COLOR = TC_MAR;
+        grid[j][i] = new Cell(i*SIZE, j*SIZE, TC_MAR, p);
+        grid[j][i].estableixTipus(TC_MAR);
       }
     }
 
@@ -16,7 +16,7 @@ var game_layout = function( p ) {
         var probj = j/FILES - 0.5; probj = probj * 2;
         var prob  = Math.sqrt(probi*probi + probj*probj);
         if (1.2*prob < Math.random()) {
-            grid[j][i].COLOR = TC_BOS;
+            grid[j][i].estableixTipus(TC_BOS);
         } 
       }
     }
@@ -34,7 +34,7 @@ var game_layout = function( p ) {
       }
       if ( min != max && min != COLS ) {
         for (var i = min; i <= max ; ++i) {
-          grid[j][i].COLOR = TC_BOS;
+          grid[j][i].estableixTipus(TC_BOS);
         }
       }
 
@@ -57,7 +57,7 @@ var game_layout = function( p ) {
       }
       if ( min != max && min != FILES ) {
         for (var j = min; j <= max ; ++j) {
-          grid[j][i].COLOR = TC_BOS;
+          grid[j][i].estableixTipus(TC_BOS);
         }
       }
 
@@ -85,7 +85,7 @@ var game_layout = function( p ) {
           ) {
             for (var k = ki; k < kf; k++) {
               for (var m = mi; m < mf; m++) {
-                grid[k][m].COLOR = TC_MUN;
+                grid[k][m].estableixTipus(TC_MUN);
               }
             }
           }
